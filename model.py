@@ -6,7 +6,7 @@
 #    By: ebennace <ebennace@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 19:29:26 by ebennace          #+#    #+#              #
-#    Updated: 2022/11/18 19:32:20 by ebennace         ###   ########.fr        #
+#    Updated: 2022/11/22 18:41:23 by ebennace         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,9 @@ def Create_transfert_learning_Model(dim_prediction : int)->Model:
 
     flatten_layer = Flatten(name='flatten_layer')(last_conv_layer)
     fully_connected = Dense(4096, name='fully_connected')(flatten_layer) 
-    prediction = Dense(dim_prediction, activation='softmax', name='lamioude')(fully_connected)
+    prediction = Dense(dim_prediction, activation='sigmoid', name='lamioude')(fully_connected)
 
 
     model = Model(inputs=vgg.input, outputs=prediction)
+    model.compile(loss='mse', optimizer='adam', metrics=['accuracy'])
     return model

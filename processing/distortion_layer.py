@@ -6,7 +6,7 @@
 #    By: ebennace <ebennace@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 19:20:48 by ebennace          #+#    #+#              #
-#    Updated: 2022/11/22 10:08:59 by ebennace         ###   ########.fr        #
+#    Updated: 2022/11/22 16:48:15 by ebennace         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ class RandomSaturation(Layer):
         saturated = random_saturation(img, self.lower, self.higher)
         return (saturated)
 
+# **************************************************************************** #
 
 class RandomBrightness(Layer):
 
@@ -42,7 +43,8 @@ class RandomBrightness(Layer):
     def call(self, img):
         bright = random_brightness(img, self.ratio)
         return (bright)
-    
+
+# **************************************************************************** #  
     
 class RandomCrop(Layer):
     
@@ -54,6 +56,8 @@ class RandomCrop(Layer):
         croped = random_crop(value=img, size=(IMAGE_HEIGHT - 125, IMAGE_WIDTH - 125, IMAGE_COLOR))
         img_resize = self.Resize(croped)
         return (img_resize)
+
+# **************************************************************************** #
       
 class RandomColorShifting(Layer):
     
