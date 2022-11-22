@@ -6,10 +6,11 @@
 #    By: ebennace <ebennace@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 19:21:44 by ebennace          #+#    #+#              #
-#    Updated: 2022/11/18 19:31:59 by ebennace         ###   ########.fr        #
+#    Updated: 2022/11/21 19:09:51 by ebennace         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+from keras.layers import Resizing
 from tensorflow.image import random_saturation
 from tensorflow.image  import random_brightness
 from tensorflow.image  import random_crop
@@ -43,14 +44,16 @@ class RandomBrightness(Layer):
         return (bright)
     
     
-class RandomCentralCrop(Layer):
+class RandomCrop(Layer):
     
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.Resize = Resizing(224, 224)
         
     def call(self, img):
         croped = random_crop(value=img, size=(IMAGE_HEIGHT - 125, IMAGE_WIDTH - 125, IMAGE_COLOR))
-        return (croped)
+        img_resize = self.Resize(croped)
+        return (img_resize)
       
 class RandomColorShifting(Layer):
     
