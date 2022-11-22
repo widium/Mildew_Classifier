@@ -1,32 +1,33 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    data.py                                            :+:      :+:    :+:    #
+#    augmentator.py                                     :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: ebennace <ebennace@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/18 19:20:48 by ebennace          #+#    #+#              #
-#    Updated: 2022/11/21 19:10:27 by ebennace         ###   ########.fr        #
+#    Created: 2022/11/18 19:21:44 by ebennace          #+#    #+#              #
+#    Updated: 2022/11/22 10:12:39 by ebennace         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 from keras.layers import Layer
 from keras.layers import RandomFlip
 from keras.layers import RandomRotation
-from augmentator import RandomSaturation
-from augmentator import RandomBrightness
-from augmentator import RandomCrop
-from augmentator import RandomColorShifting
+
+from .distortion_layer import RandomSaturation
+from .distortion_layer import RandomBrightness
+from .distortion_layer import RandomCrop
+from .distortion_layer import RandomColorShifting
 
 # **************************************************************************** #
 
 class Data_Augmentation(Layer):
     
     # ************************************** #
-    def __init__(self, nbr_of_outputs, **kwargs):
+    def __init__(self, nbr_augmented, **kwargs):
         
         super().__init__(**kwargs)
-        self.nbr_of_outputs = nbr_of_outputs
+        self.nbr_augmented = nbr_augmented
         self.Flip = RandomFlip("horizontal_and_vertical")
         self.Rotation = RandomRotation(0.8)
         self.Saturate = RandomSaturation(lower=0.5, higher=1.5)
@@ -39,7 +40,8 @@ class Data_Augmentation(Layer):
         
         set = list()
         set.append(img)
-        for nbr in range(self.nbr_of_outputs):
+        
+        for nbr in range(self.nbr_augmented):
             set.append(self.Flip(img))
             set.append(self.Rotation(img))
             set.append(self.Saturate(img))
