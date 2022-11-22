@@ -6,7 +6,7 @@
 #    By: ebennace <ebennace@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 19:21:44 by ebennace          #+#    #+#              #
-#    Updated: 2022/11/22 10:12:39 by ebennace         ###   ########.fr        #
+#    Updated: 2022/11/22 10:14:50 by ebennace         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ from .distortion_layer import RandomColorShifting
 
 # **************************************************************************** #
 
-class Data_Augmentation(Layer):
+class Image_Augmentation(Layer):
     
     # ************************************** #
     def __init__(self, nbr_augmented, **kwargs):

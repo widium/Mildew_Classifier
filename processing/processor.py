@@ -6,7 +6,7 @@
 #    By: ebennace <ebennace@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 10:02:28 by ebennace          #+#    #+#              #
-#    Updated: 2022/11/22 10:12:45 by ebennace         ###   ########.fr        #
+#    Updated: 2022/11/22 10:14:50 by ebennace         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,11 +22,11 @@ from os import listdir
 
 from tqdm import tqdm
 
-from .augmentator import Data_Augmentation
+from .augmentator import Image_Augmentation
 
 # **************************************************************************** #
 
-class Data_Processing:
+class Image_Processing:
     
     # **************************************************************************** #
     
@@ -41,7 +41,7 @@ class Data_Processing:
         self.test_set = list()
         self.Resizer = Resizing(224, 224)
         self.Rescaler = Rescaling(1./255)
-        self.Augmentator = Data_Augmentation(nbr_augmentation)
+        self.Augmentator = Image_Augmentation(nbr_augmentation)
 
     # **************************************************************************** #
     
