@@ -6,17 +6,11 @@
 #    By: ebennace <ebennace@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 10:02:28 by ebennace          #+#    #+#              #
-#    Updated: 2022/11/22 17:46:16 by ebennace         ###   ########.fr        #
+#    Updated: 2022/11/25 11:01:10 by ebennace         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 import numpy as np
-
-from keras.layers import Rescaling
-from keras.layers import Resizing
-
-from keras.preprocessing.image import load_img
-from keras.preprocessing.image import img_to_array
 
 from os import listdir
 

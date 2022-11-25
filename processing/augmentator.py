@@ -6,11 +6,10 @@
 #    By: ebennace <ebennace@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 19:21:44 by ebennace          #+#    #+#              #
-#    Updated: 2022/11/22 10:14:50 by ebennace         ###   ########.fr        #
+#    Updated: 2022/11/25 11:06:12 by ebennace         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-from keras.layers import Layer
 from keras.layers import RandomFlip
 from keras.layers import RandomRotation
 
@@ -21,12 +20,11 @@ from .distortion_layer import RandomColorShifting
 
 # **************************************************************************** #
 
-class Image_Augmentation(Layer):
+class Image_Augmentation:
     
     # ************************************** #
-    def __init__(self, nbr_augmented, **kwargs):
+    def __init__(self, nbr_augmented):
         
-        super().__init__(**kwargs)
         self.nbr_augmented = nbr_augmented
         self.Flip = RandomFlip("horizontal_and_vertical")
         self.Rotation = RandomRotation(0.8)
@@ -36,7 +34,7 @@ class Image_Augmentation(Layer):
         self.ColorShifting = RandomColorShifting(ratio=0.2)
     
     # ************************************** #
-    def generator_images(self, img):
+    def __call__(self, img):
         
         set = list()
         set.append(img)
@@ -51,7 +49,3 @@ class Image_Augmentation(Layer):
         return (set)
     
     # ************************************** #
-    def call(self, img)-> list:
-        
-        set = self.generator_images(img)
-        return (set)

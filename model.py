@@ -6,7 +6,7 @@
 #    By: ebennace <ebennace@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 19:29:26 by ebennace          #+#    #+#              #
-#    Updated: 2022/11/22 18:41:23 by ebennace         ###   ########.fr        #
+#    Updated: 2022/11/25 14:52:22 by ebennace         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,3 +38,35 @@ def Create_transfert_learning_Model(dim_prediction : int)->Model:
     model = Model(inputs=vgg.input, outputs=prediction)
     model.compile(loss='mse', optimizer='adam', metrics=['accuracy'])
     return model
+
+
+# def load_vgg(IMAGE_SHAPE : list):
+
+#   vgg = tf.keras.applications.VGG19(include_top=False, 
+#                                     input_shape=IMAGE_SHAPE,
+#                                     weights='imagenet')
+#   for layer in vgg.layers:
+#     layer.trainable = False
+
+#   return (vgg)
+
+# class Mildew_Classifier(Model):
+
+#     def __init__(self):
+#       super(Mildew_Classifier, self).__init__()
+#       self.vgg = load_vgg()
+#       self.flatten = Flatten(name='flatten_layer')
+#       self.dense = Dense(4096, name='fully_connected')
+#       self.prediction = Dense(2, activation="softmax")
+    
+#     def build():
+      
+#     def call(self, input):
+      
+#       x = self.vgg(input)
+#       x = self.flatten(x)
+#       x = self.dense(x)
+#       output = self.prediction(x)
+      
+#       return (output)
+      
